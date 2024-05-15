@@ -1,0 +1,127 @@
+{
+  "project_info": {
+    "project_number": "758425628979",
+    "firebase_url": "https://cinema-hall-783de-default-rtdb.firebaseio.com",
+    "project_id": "cinema-hall-783de",
+    "storage_bucket": "cinema-hall-783de.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:758425628979:android:f00f242711bdd8e4b24e46",
+        "android_client_info": {
+          "package_name": "com.ishu.cinemahall"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "758425628979-v93e9a82nvebrtkd6rm7ui5gbh4p416e.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB_w3Ee-aovK5rU3Ei7Pr4yp8U74ZSBATk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "758425628979-v93e9a82nvebrtkd6rm7ui5gbh4p416e.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:758425628979:android:0ce178bef2852f62b24e46",
+        "android_client_info": {
+          "package_name": "com.ishu.movies_admin"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "758425628979-v93e9a82nvebrtkd6rm7ui5gbh4p416e.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB_w3Ee-aovK5rU3Ei7Pr4yp8U74ZSBATk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "758425628979-v93e9a82nvebrtkd6rm7ui5gbh4p416e.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:758425628979:android:88371744bf485417b24e46",
+        "android_client_info": {
+          "package_name": "com.ishuji.cinemahall.cinemahall"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "758425628979-v93e9a82nvebrtkd6rm7ui5gbh4p416e.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB_w3Ee-aovK5rU3Ei7Pr4yp8U74ZSBATk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "758425628979-v93e9a82nvebrtkd6rm7ui5gbh4p416e.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:758425628979:android:91e5855903bd4e7cb24e46",
+        "android_client_info": {
+          "package_name": "com.viren.creativeaiviren.creative"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "758425628979-v93e9a82nvebrtkd6rm7ui5gbh4p416e.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB_w3Ee-aovK5rU3Ei7Pr4yp8U74ZSBATk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "758425628979-v93e9a82nvebrtkd6rm7ui5gbh4p416e.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
