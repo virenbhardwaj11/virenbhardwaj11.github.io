@@ -1,4 +1,3 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:cinemahall/screens/Actionmovies.dart';
 import 'package:cinemahall/screens/constants.dart';
@@ -30,7 +29,6 @@ class _HomeState extends State<Home> {
         _documents = snapshot.docs;
       });
     } catch (error) {
-      print("Error getting documents: $error");
       // Handle error here
     }
   }
@@ -76,11 +74,11 @@ class _HomeState extends State<Home> {
                         width: MediaQuery.of(context).size.width,
                         child: CarouselSlider(
                           options: CarouselOptions(
-                              onPageChanged: (indexs, reason) {
-                                setState(() {
-                                  index = indexs;
-                                });
-                              },
+                              // onPageChanged: (indexs, reason) {
+                              //   setState(() {
+                              //     index = indexs;
+                              //   });
+                              // },
                               disableCenter: true,
                               autoPlay: true,
                               enlargeFactor: 0.2,
@@ -158,7 +156,6 @@ class _HomeState extends State<Home> {
                     ),
                      MarvelMoviesWidget(
                         title: "Action Movies", collection: "cinema", onPressed: () {
-                          print("----");
                        Navigator.push(context, MaterialPageRoute(builder: (context) => const Actionmovies(id:"cinema",name:"Action Movies")));
                      },),
                     Divider(
