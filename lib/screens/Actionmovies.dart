@@ -2,6 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:responsive_builder/responsive_builder.dart';
 
 import 'Showvideo.dart';
 
@@ -30,70 +31,204 @@ class _ActionmoviesState extends State<Actionmovies> {
         }, icon: const Icon(Icons.arrow_back,color: Colors.white,)),
         title: Text("${widget.name}",style: GoogleFonts.poppins(fontWeight: FontWeight.w600,color: Colors.white),),
       ),
-      body: SizedBox(
-        height: height,
-        child: StreamBuilder(
-          stream: FirebaseFirestore.instance.collection(widget.id).snapshots(),
-          builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
-            if (snapshot.connectionState == ConnectionState.waiting) {
-              return const Center(
-                child: CircularProgressIndicator(),
-              );
-            }
-            if (snapshot.hasError) {
-              return Center(
-                child: Text('Error: ${snapshot.error}'),
-              );
-            }
-            return GridView.builder(
+      body: ResponsiveBuilder(builder: (context,size){
+        if(size.deviceScreenType == DeviceScreenType.tablet){
+          return SizedBox(
+            height: height,
+            child: StreamBuilder(
+              stream: FirebaseFirestore.instance.collection(widget.id).snapshots(),
+              builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
+                if (snapshot.connectionState == ConnectionState.waiting) {
+                  return const Center(
+                    child: CircularProgressIndicator(),
+                  );
+                }
+                if (snapshot.hasError) {
+                  return Center(
+                    child: Text('Error: ${snapshot.error}'),
+                  );
+                }
+                return GridView.builder(
 
-              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 3, // Number of columns
-                crossAxisSpacing: 10.0, // Spacing between columns
-                mainAxisSpacing: 10.0,
-                childAspectRatio: 0.52// Spacing between rows
-              ),
-              itemCount:snapshot.data!.docs.length , // Number of items in the grid
-              itemBuilder: (BuildContext context, int index) {
-                DocumentSnapshot document = snapshot.data!.docs[index];
-                return GestureDetector(
-                  onTap: () {
-                    Navigator.push(context, MaterialPageRoute(builder: (context) => Showvideo(url : document['mvideourl'])));
-                  },
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 02),
-                    child: SizedBox(
-                      width: width * 0.35,
-
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          ClipRRect(
-                            borderRadius: BorderRadius.circular(12),
-                            child: CachedNetworkImage(
-                              fit: BoxFit.cover,
-                              height: height * 0.22,
-                              width: width,
-                              imageUrl: document['mimage'],
-                              progressIndicatorBuilder: (context, url, downloadProgress) =>
-                                  Image.asset(fit: BoxFit.cover,"assets/loaderImg.gif", height: height * 0.25, width: width),
-                              errorWidget: (context, url, error) => const Icon(Icons.error),
-                            ),
-                          ),
-                          Text(
-                            document['mname'],
-                            style: GoogleFonts.poppins(color: Colors.white,fontSize: width*.03),
-                          )
-                        ],
-                      ),
-                    ),
+                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 3, // Number of columns
+                      crossAxisSpacing: 10.0, // Spacing between columns
+                      mainAxisSpacing: 10.0,
+                      childAspectRatio: 0.54// Spacing between rows
                   ),
+                  itemCount:snapshot.data!.docs.length , // Number of items in the grid
+                  itemBuilder: (BuildContext context, int index) {
+                    DocumentSnapshot document = snapshot.data!.docs[index];
+                    return GestureDetector(
+                      onTap: () {
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => Showvideo(url : document['mvideourl'])));
+                      },
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 02),
+                        child: SizedBox(
+                          width: width * 0.35,
+
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              ClipRRect(
+                                borderRadius: BorderRadius.circular(12),
+                                child: CachedNetworkImage(
+                                  fit: BoxFit.cover,
+                                  height: height * 0.3,
+                                  width: width,
+                                  imageUrl: document['mimage'],
+                                  progressIndicatorBuilder: (context, url, downloadProgress) =>
+                                      Image.asset(fit: BoxFit.cover,"assets/loaderImg.gif", height: height * 0.25, width: width),
+                                  errorWidget: (context, url, error) => const Icon(Icons.error),
+                                ),
+                              ),
+                              Text(
+                                document['mname'],
+                                style: GoogleFonts.poppins(color: Colors.white,fontSize: width*.03),
+                              )
+                            ],
+                          ),
+                        ),
+                      ),
+                    );
+                  },
                 );
               },
-            );
-          },
-        ),
-      ),
+            ),
+          );
+        }
+        if(size.deviceScreenType == DeviceScreenType.mobile){
+          return SizedBox(
+            height: height,
+            child: StreamBuilder(
+              stream: FirebaseFirestore.instance.collection(widget.id).snapshots(),
+              builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
+                if (snapshot.connectionState == ConnectionState.waiting) {
+                  return const Center(
+                    child: CircularProgressIndicator(),
+                  );
+                }
+                if (snapshot.hasError) {
+                  return Center(
+                    child: Text('Error: ${snapshot.error}'),
+                  );
+                }
+                return GridView.builder(
+
+                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 3, // Number of columns
+                      crossAxisSpacing: 10.0, // Spacing between columns
+                      mainAxisSpacing: 10.0,
+                      childAspectRatio: 0.45// Spacing between rows
+                  ),
+                  itemCount:snapshot.data!.docs.length , // Number of items in the grid
+                  itemBuilder: (BuildContext context, int index) {
+                    DocumentSnapshot document = snapshot.data!.docs[index];
+                    return GestureDetector(
+                      onTap: () {
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => Showvideo(url : document['mvideourl'])));
+                      },
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 02),
+                        child: SizedBox(
+                          width: width * 0.35,
+
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              ClipRRect(
+                                borderRadius: BorderRadius.circular(12),
+                                child: CachedNetworkImage(
+                                  fit: BoxFit.cover,
+                                  height: height * 0.25,
+                                  width: width,
+                                  imageUrl: document['mimage'],
+                                  progressIndicatorBuilder: (context, url, downloadProgress) =>
+                                      Image.asset(fit: BoxFit.cover,"assets/loaderImg.gif", height: height * 0.25, width: width),
+                                  errorWidget: (context, url, error) => const Icon(Icons.error),
+                                ),
+                              ),
+                              Text(
+                                document['mname'],
+                                style: GoogleFonts.poppins(color: Colors.white,fontSize: width*.03),
+                              )
+                            ],
+                          ),
+                        ),
+                      ),
+                    );
+                  },
+                );
+              },
+            ),
+          );
+        }
+        return SizedBox(
+          height: height,
+          child: StreamBuilder(
+            stream: FirebaseFirestore.instance.collection(widget.id).snapshots(),
+            builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
+              if (snapshot.connectionState == ConnectionState.waiting) {
+                return const Center(
+                  child: CircularProgressIndicator(),
+                );
+              }
+              if (snapshot.hasError) {
+                return Center(
+                  child: Text('Error: ${snapshot.error}'),
+                );
+              }
+              return GridView.builder(
+
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 3, // Number of columns
+                    crossAxisSpacing: 10.0, // Spacing between columns
+                    mainAxisSpacing: 10.0,
+                    childAspectRatio: 0.54// Spacing between rows
+                ),
+                itemCount:snapshot.data!.docs.length , // Number of items in the grid
+                itemBuilder: (BuildContext context, int index) {
+                  DocumentSnapshot document = snapshot.data!.docs[index];
+                  return GestureDetector(
+                    onTap: () {
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => Showvideo(url : document['mvideourl'])));
+                    },
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 02),
+                      child: SizedBox(
+                        width: width * 0.35,
+
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            ClipRRect(
+                              borderRadius: BorderRadius.circular(12),
+                              child: CachedNetworkImage(
+                                fit: BoxFit.cover,
+                                height: height * 0.3,
+                                width: width,
+                                imageUrl: document['mimage'],
+                                progressIndicatorBuilder: (context, url, downloadProgress) =>
+                                    Image.asset(fit: BoxFit.cover,"assets/loaderImg.gif", height: height * 0.25, width: width),
+                                errorWidget: (context, url, error) => const Icon(Icons.error),
+                              ),
+                            ),
+                            Text(
+                              document['mname'],
+                              style: GoogleFonts.poppins(color: Colors.white,fontSize: width*.03),
+                            )
+                          ],
+                        ),
+                      ),
+                    ),
+                  );
+                },
+              );
+            },
+          ),
+        );
+      })
     );
   }
 }

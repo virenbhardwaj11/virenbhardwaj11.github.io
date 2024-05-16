@@ -13,15 +13,11 @@ class Showvideo extends StatefulWidget {
 }
 
 class _ShowvideoState extends State<Showvideo> {
-  var url = "";
   late FlickManager flickManager;
   Future<void> initializePlayer() async {}
   @override
   void initState() {
     super.initState();
-    setState(() {
-      url ="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4";
-    });
     flickManager = FlickManager(
         videoPlayerController:
         VideoPlayerController.networkUrl(Uri.parse(widget.url),
@@ -43,6 +39,13 @@ class _ShowvideoState extends State<Showvideo> {
       child: Scaffold(
         body: ResponsiveBuilder(builder: (context,size){
           if(size.deviceScreenType == DeviceScreenType.mobile){
+            return Center(
+              child: FlickVideoPlayer(
+                preferredDeviceOrientation: const [DeviceOrientation.landscapeLeft],
+                  flickManager: flickManager
+              ),
+            );
+          } if(size.deviceScreenType == DeviceScreenType.tablet){
             return Center(
               child: FlickVideoPlayer(
                 preferredDeviceOrientation: const [DeviceOrientation.landscapeLeft],
