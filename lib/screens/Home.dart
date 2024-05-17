@@ -39,7 +39,7 @@ class _HomeState extends State<Home> {
     var width = MediaQuery.of(context).size.width;
     var height = MediaQuery.of(context).size.height;
     return Scaffold(body: ResponsiveBuilder(builder: (context, size) {
-      if (size.deviceScreenType == DeviceScreenType.mobile) {
+      if (size.deviceScreenType == DeviceScreenType.mobile && width < 400) {
         return Container(
           decoration: const BoxDecoration(
             gradient: LinearGradient(
@@ -513,6 +513,7 @@ class _HomeState extends State<Home> {
           ),
         );
       }
+
       return Container(
         decoration: const BoxDecoration(
           gradient: LinearGradient(
@@ -533,15 +534,10 @@ class _HomeState extends State<Home> {
               children: [
                 Container(
                     margin: const EdgeInsets.symmetric(vertical: 10),
-                    height: MediaQuery.of(context).size.height * .4,
+                    height: MediaQuery.of(context).size.height *.5,
                     width: MediaQuery.of(context).size.width,
                     child: CarouselSlider(
                       options: CarouselOptions(
-                          onPageChanged: (indexs, reason) {
-                            setState(() {
-                              index = indexs;
-                            });
-                          },
                           disableCenter: true,
                           autoPlay: true,
                           enlargeFactor: 0.2,
@@ -573,7 +569,16 @@ class _HomeState extends State<Home> {
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
                                     IconButton(
-                                        onPressed: () {},
+                                        onPressed: () {
+                                          Navigator.push(
+                                              context,
+                                              MaterialPageRoute(
+                                                  builder: (context) =>
+                                                  const Actionmovies(
+                                                      id: "banner",
+                                                      name:
+                                                      "Trending Movies")));
+                                        },
                                         icon: Icon(
                                           Icons.play_circle_outlined,
                                           color: Colors.white,
@@ -595,29 +600,10 @@ class _HomeState extends State<Home> {
                           )
                           .toList(),
                     )),
-                SizedBox(
-                  width: width * .1,
-                  height: height * .1,
-                  child: ListView.builder(
-                    itemCount: _documents.length,
-                    scrollDirection: Axis.horizontal,
-                    itemBuilder: (BuildContext context, int indexp) {
-                      return Container(
-                        width: 15,
-                        height: 15.0,
-                        margin: const EdgeInsets.all(1),
-                        decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          color: index == indexp ? Colors.white : Colors.grey,
-                        ),
-                      );
-                    },
-                  ),
-                ),
                 Divider(
                   color: Colors.white.withOpacity(0.5),
                 ),
-                MarvelMoviesWidget(
+                MarvelMovieswebWidget(
                   title: "Action Movies",
                   collection: "cinema",
                   onPressed: () {},
@@ -625,7 +611,7 @@ class _HomeState extends State<Home> {
                 Divider(
                   color: Colors.white.withOpacity(0.5),
                 ),
-                MarvelMoviesWidget(
+                MarvelMovieswebWidget(
                   title: "Horror Movies",
                   collection: "horror",
                   onPressed: () {},
@@ -633,7 +619,7 @@ class _HomeState extends State<Home> {
                 Divider(
                   color: Colors.white.withOpacity(0.5),
                 ),
-                MarvelMoviesWidget(
+                MarvelMovieswebWidget(
                   title: "Marvel Movies",
                   collection: "marvel",
                   onPressed: () {},
@@ -641,7 +627,7 @@ class _HomeState extends State<Home> {
                 Divider(
                   color: Colors.white.withOpacity(0.5),
                 ),
-                MarvelMoviesWidget(
+                MarvelMovieswebWidget(
                   title: "Adventure Movies",
                   collection: "Adventure",
                   onPressed: () {},
@@ -649,7 +635,7 @@ class _HomeState extends State<Home> {
                 Divider(
                   color: Colors.white.withOpacity(0.5),
                 ),
-                MarvelMoviesWidget(
+                MarvelMovieswebWidget(
                   title: "Kids Movies",
                   collection: "kids",
                   onPressed: () {},
@@ -657,7 +643,7 @@ class _HomeState extends State<Home> {
                 Divider(
                   color: Colors.white.withOpacity(0.5),
                 ),
-                MarvelMoviesWidget(
+                MarvelMovieswebWidget(
                   title: "Science Fiction Movies",
                   collection: "Sci-Fi",
                   onPressed: () {},
@@ -665,7 +651,7 @@ class _HomeState extends State<Home> {
                 Divider(
                   color: Colors.white.withOpacity(0.5),
                 ),
-                MarvelMoviesWidget(
+                MarvelMovieswebWidget(
                   title: "Comedy Movies",
                   collection: "Comedy",
                   onPressed: () {},
@@ -673,7 +659,7 @@ class _HomeState extends State<Home> {
                 Divider(
                   color: Colors.white.withOpacity(0.5),
                 ),
-                MarvelMoviesWidget(
+                MarvelMovieswebWidget(
                   title: "Thriller Movies",
                   collection: "Thriller",
                   onPressed: () {},
@@ -681,7 +667,7 @@ class _HomeState extends State<Home> {
                 Divider(
                   color: Colors.white.withOpacity(0.5),
                 ),
-                MarvelMoviesWidget(
+                MarvelMovieswebWidget(
                   title: "Romantic Movies",
                   collection: "Romantic",
                   onPressed: () {},
